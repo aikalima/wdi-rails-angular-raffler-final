@@ -1,6 +1,6 @@
-app = angular.module("Raffler", ["ngResource", "raf.factories", "raf.filters"])
+rafflerApp = angular.module "Raffler", ["ngResource", "raf.factories", "raf.filters"]
 
-@RaffleCtrl = ["$scope", "Entry", ($scope, Entry) ->
+RaffleCtrl = ["$scope", "Entry", ($scope, Entry) ->
   $scope.entries = Entry.query()
 
   $scope.aDate = new Date()
@@ -20,5 +20,6 @@ app = angular.module("Raffler", ["ngResource", "raf.factories", "raf.filters"])
       Entry.update(entry)
       # entry.$update()
       $scope.lastWinner = entry
-
 ]
+
+rafflerApp.controller "RaffleCtrl", RaffleCtrl

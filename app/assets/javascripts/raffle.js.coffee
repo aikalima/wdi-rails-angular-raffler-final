@@ -1,13 +1,9 @@
-app = angular.module("Raffler", ["ngResource"])
-
-app.factory "Entry", ["$resource", ($resource) ->
-  $resource("/entries/:id", {id: "@id"},{
-    update: {method: "PUT"}
-  })
-]
+app = angular.module("Raffler", ["ngResource", "raf.factories", "raf.filters"])
 
 @RaffleCtrl = ["$scope", "Entry", ($scope, Entry) ->
   $scope.entries = Entry.query()
+
+  $scope.aDate = new Date()
 
   $scope.addEntry = ->
     entry = Entry.save($scope.newEntry)
